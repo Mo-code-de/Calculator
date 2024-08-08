@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     @IBAction func equalsButton(_ sender: Any) {
         if(validInput()){
-            let checkedWorkingsForPercent = workings.replacingOccurrences(of: "%", with: "0.01")
+            let checkedWorkingsForPercent = workings.replacingOccurrences(of: "%", with: "*0.01")
             let expression = NSExpression(format: checkedWorkingsForPercent)
             let result = expression.expressionValue(with: nil, context: nil) as! Double
             let resultString = formatResult(result: result)
