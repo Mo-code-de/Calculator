@@ -21,12 +21,14 @@ class ViewController: UIViewController {
         clearAll()
     }
     
+    //Change all variables to blank.
     func clearAll(){
         workings = ""
         calculatorResult.text = ""
         calculatorWorkings.text = ""
     }
     
+    //Write the input into workings and write it to the screen.
     func addToWorkings(value: String){
         workings = workings + value
         calculatorWorkings.text = workings
@@ -57,7 +59,7 @@ class ViewController: UIViewController {
             self.present(alert,animated: true, completion: nil)
         }
     }
-    
+    //Check if input is valid. The first and last chars in the input-string cannot be a special char.
     func validInput() -> Bool {
         var count = 0
         var funcCharIndexes = [Int]()
@@ -88,6 +90,7 @@ class ViewController: UIViewController {
         return true
     }
     
+    //Defines what a special Character is.
     func specialCharacter (char: Character) -> Bool {
         if(char == "*") {
             return true
@@ -104,14 +107,16 @@ class ViewController: UIViewController {
         return false
     }
     
-    func formatResult(result: Double) -> String {
-        if(result.truncatingRemainder(dividingBy: 1) == 0){
-             return String (format: "%.0f", result)
+    //Formating the result-string.
+    func formatResult(result: Double) -> String {                   //Formating double to String
+        if(result.truncatingRemainder(dividingBy: 1) == 0){         //Check if result is a whole number by dividing                                                                 through 1
+             return String (format: "%.0f", result)                 //If result = whole number, show zero decimal places.
         } else {
-            return String (format: "%.2f", result)
+            return String (format: "%.2f", result)                  //If result != wohle number, show two decimal places.
         }
     }
     
+    //define all buttons/values (linked to the storyboard
     @IBAction func zeroButton(_ sender: Any) {
         addToWorkings(value: "0")
     }
